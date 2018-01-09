@@ -5,6 +5,7 @@ import { reset } from 'redux-form';
 
 import * as actions from '../actions';
 import StockItemForm from './StockItemForm';
+import showResults from './showResults';
 
 class StockPage extends Component {
   constructor(props) {
@@ -34,9 +35,7 @@ class StockPage extends Component {
           warehouses={warehouses}
         />
 
-        <ul>
-          {items && _.map(items, item => <li key={item.sku}>{item.sku}</li>)}
-        </ul>
+        {showResults(items)}
       </div>
     );
   }
