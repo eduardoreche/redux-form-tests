@@ -4,7 +4,7 @@ import ReactTable from 'react-table';
 
 import "react-table/react-table.css";
 
-export default function showResults(items) {
+export default function showResults(items, productList, warehouseList) {
   return(
     <div>
       <ReactTable
@@ -16,15 +16,29 @@ export default function showResults(items) {
           },
           {
             Header: 'Warehouse',
-            accessor: 'warehouse'
+            accessor: 'warehouse',
+            Cell: row => (
+              <span>
+                {findInArray(row.value, warehouseList).name}
+              </span>
+            )
           },
           {
             Header: 'Product',
-            accessor: 'product'
+            accessor: 'product',
+            Cell: row => (
+              <span>
+                {row.value}
+                {findInArray(row.value, productList).name}
+              </span>
+            )
           },
           {
             Header: 'Condition',
-            accessor: 'condition'
+            accessor: 'condition',
+            Cell: row => (
+              <span>{ row.value === 'N' ? 'New' : 'Used' }</span>
+            )
           },
 
         ]}
@@ -33,4 +47,9 @@ export default function showResults(items) {
       />
     </div>
   )
+}
+
+function findInArray(id, list) {
+  const a = _.find(list, item => item.id === id);
+  return a;
 }

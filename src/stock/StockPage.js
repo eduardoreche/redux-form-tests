@@ -35,7 +35,7 @@ class StockPage extends Component {
           warehouses={warehouses}
         />
 
-        {showResults(items)}
+        {showResults(items, products, warehouses)}
       </div>
     );
   }

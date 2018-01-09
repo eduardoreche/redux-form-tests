@@ -20,11 +20,11 @@ export const fetchItems = () => dispatch => {
 
 export const fetchProducts = () => dispatch => {
   const products = [
-    {id: 123, name: 'Product 1'},
-    { id: 1234, name: 'Product 2' },
-    { id: 454, name: 'Product 3' },
-    { id: 9384, name: 'Product 4' },
-    { id: 2938, name: 'Product 5' },
+    {id: '123', name: 'Product 1'},
+    { id: '1234', name: 'Product 2' },
+    { id: '454', name: 'Product 3' },
+    { id: '9384', name: 'Product 4' },
+    { id: '2938', name: 'Product 5' },
   ];
 
   dispatch({
@@ -35,10 +35,10 @@ export const fetchProducts = () => dispatch => {
 
 export const fetchWarehouses = () => dispatch => {
   const warehouses = [
-    { id: 1, name: 'Warehouse 1'},
-    { id: 2, name: 'Warehouse 2' },
-    { id: 3, name: 'Warehouse 3' },
-    { id: 4, name: 'Warehouse 4' },
+    { id: '1', name: 'Warehouse 1'},
+    { id: '2', name: 'Warehouse 2' },
+    { id: '3', name: 'Warehouse 3' },
+    { id: '4', name: 'Warehouse 4' },
   ];
 
   dispatch({
