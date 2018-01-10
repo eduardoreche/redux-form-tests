@@ -10,6 +10,10 @@ import showResults from './showResults';
 class StockPage extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      page: 'list'
+    };
   }
 
   componentWillMount() {
@@ -21,6 +25,40 @@ class StockPage extends Component {
     console.log(values);
     this.props.addItem(values);
     setTimeout(this.props.fetchItems(), 1000);
+    this.show('list');
+  }
+
+  renderList() {
+    const { products, warehouses, items } = this.props;
+    return <div>{showResults(items, products, warehouses)}</div>;
+  }
+
+  renderNavigationButtons(title, page) {
+    return (
+      <div className="text-right" style={{ 'margin-bottom': '4px' }}>
+        {this.state.page === 'form' && (
+          <button
+            className="btn btn-primary btn-sm"
+            type="button"
+            onClick={() => this.show('list')}>
+            &#8656; Back
+          </button>
+        )}
+
+        {this.state.page === 'list' && (
+          <button
+            className="btn btn-primary btn-sm"
+            type="button"
+            onClick={() => this.show('form')}>
+            New
+          </button>
+        )}
+      </div>
+    );
+  }
+
+  show(page) {
+    this.setState({ page });
   }
 
   render() {
@@ -28,14 +66,19 @@ class StockPage extends Component {
     return (
       <div>
         <h1>Stock</h1>
+        {this.renderNavigationButtons()}
 
-        <StockItemForm
-          onSubmit={this.handleSubmit.bind(this)}
-          products={products}
-          warehouses={warehouses}
-        />
+        {this.state.page === 'form' && (
+          <div>
+            <StockItemForm
+              onSubmit={this.handleSubmit.bind(this)}
+              products={products}
+              warehouses={warehouses}
+            />
+          </div>
+        )}
 
-        {showResults(items, products, warehouses)}
+        {this.state.page === 'list' && this.renderList()}
       </div>
     );
   }

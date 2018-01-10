@@ -28,7 +28,6 @@ export default function showResults(items, productList, warehouseList) {
             accessor: 'product',
             Cell: row => (
               <span>
-                {row.value}
                 {findInArray(row.value, productList).name}
               </span>
             )
