@@ -50,7 +50,7 @@ class StockPage extends Component {
             className="btn btn-primary btn-sm"
             type="button"
             onClick={() => this.show('form')}>
-            New
+            Add Item
           </button>
         )}
       </div>
